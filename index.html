@@ -4,200 +4,212 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CARB | Quality &amp; Simplicity</title>
-<meta name="description" content="CARB: professional Roblox scripts. Quality & Simplicity.">
-<meta name="theme-color" content="#050806">
+<meta name="description" content="CARB: Roblox scripts built for quality and simplicity.">
+<meta name="theme-color" content="#060807">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍀</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#050806; --panel:#0c120e; --charcoal:#141c17; --line:rgba(52,255,140,.18);
-  --emerald:#10b981; --neon:#39ff88; --text:#e8f5ec; --muted:#8fa89a;
-  --head:'Outfit','Segoe UI',system-ui,sans-serif; --body:'DM Sans','Segoe UI',system-ui,sans-serif;
+  --bg:#060807; --panel:#0d1210; --raise:#121a16; --line:#1f2b25; --line2:#2b3d33;
+  --green:#22d673; --neon:#4dff9a; --deep:#0f7a45; --text:#e9efeb; --muted:#8a9a91;
+  --head:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif; --body:'Manrope','Segoe UI',system-ui,sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:84px}
-body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6;overflow-x:hidden}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.65;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;cursor:pointer}
 :focus-visible{outline:2px solid var(--neon);outline-offset:3px}
-h1,h2,h3{font-family:var(--head);line-height:1.1}
-.wrap{width:min(1120px,92%);margin:0 auto}
-section{padding:96px 0}
-.sec-head{text-align:center;max-width:640px;margin:0 auto 48px}
-.sec-head h2{font-size:clamp(2rem,4.5vw,3rem);font-weight:800}
-.sec-head p{color:var(--muted);margin-top:12px}
+h1,h2,h3{font-family:var(--head);line-height:1.05;letter-spacing:-.02em}
+.wrap{width:min(1100px,90%);margin:0 auto}
+section{padding:100px 0}
 
-/* animated lighting */
-.glow{position:fixed;inset:0;z-index:-1;overflow:hidden;background:var(--bg)}
-.glow i{position:absolute;border-radius:50%;filter:blur(110px);opacity:.28;will-change:transform}
-.glow i:nth-child(1){width:520px;height:520px;background:var(--emerald);top:-120px;left:-100px;animation:d1 22s ease-in-out infinite alternate}
-.glow i:nth-child(2){width:420px;height:420px;background:var(--neon);opacity:.14;bottom:-120px;right:-80px;animation:d2 26s ease-in-out infinite alternate}
-.glow i:nth-child(3){width:360px;height:360px;background:#0a7a52;top:45%;left:55%;animation:d1 30s ease-in-out infinite alternate-reverse}
-@keyframes d1{to{transform:translate(160px,120px) scale(1.2)}}
-@keyframes d2{to{transform:translate(-200px,-90px) scale(.85)}}
-.glow::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(57,255,136,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(57,255,136,.035) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(circle at 50% 30%,#000,transparent 75%)}
+/* one slow green light, nothing else moving */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(900px 500px at 15% -5%,rgba(34,214,115,.16),transparent 70%),radial-gradient(700px 500px at 100% 40%,rgba(15,122,69,.14),transparent 70%);
+  animation:breathe 14s ease-in-out infinite alternate}
+@keyframes breathe{to{opacity:.55}}
 
 /* nav */
-nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:.3s}
-nav.scrolled{background:rgba(5,8,6,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav-in{display:flex;align-items:center;justify-content:space-between;height:72px}
-.logo{font-family:var(--head);font-weight:800;font-size:1.5rem;letter-spacing:.04em;display:flex;gap:8px;align-items:center}
-.logo b{color:var(--neon);text-shadow:0 0 18px rgba(57,255,136,.6)}
-.links{display:flex;gap:6px;list-style:none;align-items:center}
-.links a{padding:8px 14px;border-radius:999px;color:var(--muted);font-weight:500;font-size:.95rem;transition:.25s}
-.links a:hover{color:var(--neon);background:rgba(57,255,136,.08)}
-.links a.pill{background:var(--emerald);color:#02140b;font-weight:700}
-.links a.pill:hover{background:var(--neon);color:#02140b;box-shadow:0 0 22px rgba(57,255,136,.5)}
-.burger{display:none;background:none;border:1px solid var(--line);border-radius:10px;width:44px;height:44px;font-size:1.3rem}
+nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(6,8,7,.85);backdrop-filter:blur(12px);border-color:var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-family:var(--head);font-weight:800;font-size:1.45rem;letter-spacing:.02em;display:flex;gap:8px;align-items:center}
+.links{display:flex;gap:4px;list-style:none;align-items:center}
+.links a{padding:8px 13px;border-radius:8px;color:var(--muted);font-weight:600;font-size:.92rem;transition:color .2s,background .2s}
+.links a:hover{color:var(--text);background:var(--raise)}
+.links a.join{margin-left:8px;background:var(--green);color:#04170d}
+.links a.join:hover{background:var(--neon)}
+.burger{display:none;background:none;border:1px solid var(--line2);border-radius:8px;width:42px;height:42px;font-size:1.2rem}
 
 /* buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 28px;border-radius:12px;font-weight:700;border:1px solid transparent;transition:transform .2s,box-shadow .25s,background .25s}
-.btn:hover{transform:translateY(-3px)}
-.btn-primary{background:linear-gradient(135deg,var(--neon),var(--emerald));color:#02140b;box-shadow:0 8px 30px rgba(16,185,129,.35)}
-.btn-primary:hover{box-shadow:0 12px 40px rgba(57,255,136,.55)}
-.btn-ghost{border-color:var(--line);background:rgba(255,255,255,.03);color:var(--text)}
-.btn-ghost:hover{border-color:var(--neon);box-shadow:0 0 24px rgba(57,255,136,.25)}
-.btn-discord{background:#5865f2;color:#fff;box-shadow:0 8px 30px rgba(88,101,242,.35)}
-.btn-discord:hover{box-shadow:0 12px 40px rgba(88,101,242,.55)}
-.btn svg{width:20px;height:20px;fill:currentColor}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 24px;border-radius:9px;font-weight:700;font-size:.97rem;border:1px solid transparent;transition:transform .2s,background .2s,border-color .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--green);color:#04170d}
+.btn-primary:hover{background:var(--neon);box-shadow:0 6px 24px rgba(34,214,115,.3)}
+.btn-line{border-color:var(--line2);color:var(--text)}
+.btn-line:hover{border-color:var(--green);color:var(--neon)}
+.btn svg{width:19px;height:19px;fill:currentColor}
 
 /* hero */
-.hero{min-height:100vh;display:flex;align-items:center;text-align:center;padding:130px 0 80px}
-.hero .clover{font-size:4.5rem;display:inline-block;filter:drop-shadow(0 0 28px rgba(57,255,136,.7));animation:float 5s ease-in-out infinite}
-@keyframes float{50%{transform:translateY(-12px) rotate(6deg)}}
-.hero h1{font-size:clamp(4rem,13vw,9rem);font-weight:800;letter-spacing:.06em;background:linear-gradient(180deg,#fff 10%,var(--neon) 60%,var(--emerald));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 40px rgba(57,255,136,.35));animation:rise 1s cubic-bezier(.2,.8,.2,1) both}
-.tag{font-family:var(--head);font-size:clamp(1.2rem,3vw,1.8rem);color:var(--neon);margin:10px 0 22px;font-weight:500;animation:rise 1s .15s cubic-bezier(.2,.8,.2,1) both}
-.hero p{max-width:620px;margin:0 auto 36px;color:var(--muted);font-size:1.1rem;animation:rise 1s .3s cubic-bezier(.2,.8,.2,1) both}
-.cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;animation:rise 1s .45s cubic-bezier(.2,.8,.2,1) both}
-@keyframes rise{from{opacity:0;transform:translateY(28px)}}
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 70px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center}
+.hero h1{font-size:clamp(4.5rem,12vw,9rem);font-weight:800;letter-spacing:-.045em;line-height:.88}
+.hero h1 span{font-size:.38em;vertical-align:top;margin-left:.1em;letter-spacing:0}
+.tag{font-family:var(--head);font-size:1.6rem;font-weight:600;color:var(--neon);margin:22px 0 16px}
+.hero p{max-width:480px;color:var(--muted);font-size:1.05rem;margin-bottom:34px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero>.wrap>*,.hero-grid>*{animation:in .8s cubic-bezier(.2,.7,.2,1) both}
+.hero-grid>*:last-child{animation-delay:.2s}
+@keyframes in{from{opacity:0;transform:translateY(20px)}}
 
-/* glass card */
-.card{background:linear-gradient(160deg,rgba(20,28,23,.78),rgba(8,12,10,.78));backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:20px;padding:30px;transition:transform .3s,box-shadow .3s,border-color .3s}
+.catalog{background:var(--panel);border:1px solid var(--line2);border-radius:14px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.cat-top{display:flex;gap:7px;padding:14px 18px;border-bottom:1px solid var(--line);align-items:center;color:var(--muted);font-size:.82rem;font-weight:600}
+.cat-top i{width:10px;height:10px;border-radius:50%;background:var(--line2)}
+.cat-top i:first-child{background:var(--green)}
+.cat-top span{margin-left:auto}
+.cat-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 20px;border-bottom:1px solid var(--line);transition:background .2s}
+.cat-row:last-child{border:0}
+.cat-row:hover{background:var(--raise)}
+.cat-row b{font-weight:700}
+.cat-row small{color:var(--muted);display:block;font-size:.82rem}
+.chip{font-size:.78rem;font-weight:700;padding:4px 10px;border-radius:6px;background:rgba(34,214,115,.12);color:var(--neon);white-space:nowrap}
+.chip.dim{background:var(--raise);color:var(--muted)}
+
+/* headings */
+.sec-head{margin-bottom:44px;max-width:560px}
+.sec-head h2{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:800}
+.sec-head p{color:var(--muted);margin-top:12px}
 
 /* dropdown */
-.picker{max-width:420px;margin:0 auto 14px;position:relative;z-index:10}
-.picker label{display:block;text-align:center;color:var(--muted);font-size:.9rem;margin-bottom:8px}
-.dd-btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;border-radius:14px;background:rgba(12,18,14,.9);border:1px solid var(--emerald);font-weight:700;font-size:1.05rem;box-shadow:0 0 0 0 rgba(57,255,136,.4);animation:pulse 3s infinite;transition:.25s}
-.dd-btn:hover,.dd-btn[aria-expanded=true]{border-color:var(--neon);box-shadow:0 0 28px rgba(57,255,136,.3)}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(57,255,136,.35)}70%,100%{box-shadow:0 0 0 12px rgba(57,255,136,0)}}
-.dd-btn .chev{transition:transform .3s;color:var(--neon)}
-.dd-btn[aria-expanded=true] .chev{transform:rotate(180deg)}
-.dd-list{position:absolute;top:calc(100% + 8px);left:0;right:0;list-style:none;background:rgba(10,15,12,.97);border:1px solid var(--line);border-radius:14px;padding:6px;box-shadow:0 20px 50px rgba(0,0,0,.6),0 0 30px rgba(16,185,129,.15);opacity:0;transform:translateY(-8px) scale(.98);pointer-events:none;transition:.22s}
+.picker{max-width:380px;position:relative;z-index:10}
+.picker label{display:block;color:var(--muted);font-size:.85rem;font-weight:600;margin-bottom:8px}
+.dd-btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 18px;border-radius:10px;background:var(--panel);border:1px solid var(--line2);font-weight:700;font-size:1rem;transition:border-color .2s,box-shadow .2s}
+.dd-btn:hover,.dd-btn[aria-expanded=true]{border-color:var(--green);box-shadow:0 0 0 4px rgba(34,214,115,.1)}
+.chev{width:10px;height:10px;border-right:2px solid var(--green);border-bottom:2px solid var(--green);transform:rotate(45deg) translateY(-2px);transition:transform .25s}
+.dd-btn[aria-expanded=true] .chev{transform:rotate(225deg)}
+.dd-list{position:absolute;top:calc(100% + 6px);left:0;right:0;list-style:none;background:#0a0f0c;border:1px solid var(--line2);border-radius:10px;padding:5px;box-shadow:0 20px 50px rgba(0,0,0,.65);opacity:0;transform:translateY(-6px);pointer-events:none;transition:opacity .18s,transform .18s}
 .dd-list.open{opacity:1;transform:none;pointer-events:auto}
-.dd-list li{padding:13px 16px;border-radius:10px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:.15s}
-.dd-list li:hover,.dd-list li.focus{background:rgba(57,255,136,.1);color:var(--neon)}
+.dd-list li{padding:12px 14px;border-radius:7px;cursor:pointer;display:flex;justify-content:space-between;font-weight:500}
+.dd-list li:hover,.dd-list li.focus{background:var(--raise);color:var(--neon)}
 .dd-list li[aria-selected=true]{color:var(--neon);font-weight:700}
 .dd-list li[aria-selected=true]::after{content:"✓"}
-.game-title{text-align:center;font-family:var(--head);font-size:1.6rem;font-weight:700;margin:34px 0 22px;transition:.3s}
-.game-title span{color:var(--neon)}
+.game-title{font-family:var(--head);font-size:1.5rem;font-weight:600;margin:40px 0 18px;color:var(--muted)}
+.game-title span{color:var(--text)}
 
 /* comparison */
-.compare{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:stretch;transition:opacity .25s,transform .25s}
-.compare.swap{opacity:0;transform:translateY(14px)}
-.plan{display:flex;flex-direction:column;position:relative}
-.plan:hover{transform:translateY(-4px)}
-.plan.premium{border-color:var(--neon);box-shadow:0 0 0 1px rgba(57,255,136,.35),0 0 50px rgba(16,185,129,.25),inset 0 0 40px rgba(16,185,129,.06)}
-.plan h3{font-size:1.5rem;margin:14px 0 20px}
-.badge{align-self:flex-start;padding:6px 14px;border-radius:999px;font-size:.85rem;font-weight:700}
-.badge.free{background:rgba(16,185,129,.16);color:var(--neon);border:1px solid var(--emerald)}
-.badge.prem{background:linear-gradient(135deg,var(--neon),var(--emerald));color:#02140b}
-.plan ul{list-style:none;display:grid;gap:14px;flex:1}
-.plan li{display:flex;gap:12px;align-items:flex-start;color:#cfe6d8}
-.plan li::before{content:"";flex:none;width:8px;height:8px;margin-top:9px;border-radius:50%;background:var(--neon);box-shadow:0 0 10px var(--neon)}
-.plan.premium li::before{background:var(--emerald)}
-.note{margin-top:22px;padding:12px 16px;border-radius:12px;background:rgba(57,255,136,.08);border:1px dashed var(--emerald);color:var(--neon);font-size:.92rem;font-weight:500}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch;transition:opacity .22s,transform .22s}
+.compare.swap{opacity:0;transform:translateY(10px)}
+.plan{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:32px;display:flex;flex-direction:column}
+.plan.premium{border-color:var(--green);background:linear-gradient(180deg,rgba(34,214,115,.07),var(--panel) 55%);box-shadow:0 0 0 1px rgba(34,214,115,.25),0 20px 60px rgba(34,214,115,.08)}
+.plan-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+.plan h3{font-size:1.4rem;font-weight:800}
+.badge{font-size:.78rem;font-weight:800;padding:5px 11px;border-radius:6px}
+.badge.free{background:rgba(34,214,115,.14);color:var(--neon)}
+.badge.prem{background:var(--green);color:#04170d}
+.plan ul{list-style:none;display:grid;gap:0;flex:1}
+.plan li{display:flex;gap:14px;padding:13px 0;border-top:1px solid var(--line);color:#cbd8d0}
+.plan li::before{content:"";flex:none;width:6px;height:6px;margin-top:10px;border-radius:50%;background:var(--green)}
+.note{margin-top:20px;padding:12px 14px;border-radius:8px;border:1px solid var(--line2);color:var(--neon);font-size:.9rem;font-weight:600}
 
 /* pricing */
-.pricing{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.price{text-align:center;display:flex;flex-direction:column;gap:6px}
-.price:hover{transform:translateY(-8px);border-color:var(--neon);box-shadow:0 18px 50px rgba(16,185,129,.22)}
-.price .dur{font-weight:700;font-size:1.1rem}
-.price .amt{font-family:var(--head);font-size:2.8rem;font-weight:800;color:var(--neon);margin:6px 0 18px}
+.pricing{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.price{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px;display:flex;flex-direction:column;transition:border-color .25s,transform .25s}
+.price:hover{border-color:var(--green);transform:translateY(-4px)}
+.price .dur{font-weight:700;color:var(--muted)}
+.price .amt{font-family:var(--head);font-size:2.6rem;font-weight:800;margin:6px 0 22px;letter-spacing:-.03em}
 .price .btn{margin-top:auto;width:100%}
-.price.life{grid-column:1/-1;display:grid;grid-template-columns:1fr auto;align-items:center;text-align:left;gap:20px 40px;padding:40px;border-color:var(--neon);background:linear-gradient(135deg,rgba(16,185,129,.22),rgba(8,12,10,.85));box-shadow:0 0 70px rgba(57,255,136,.2);position:relative;overflow:hidden}
-.price.life::before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(57,255,136,.14) 50%,transparent 65%);transform:translateX(-100%);animation:shine 5s infinite}
-@keyframes shine{40%,100%{transform:translateX(100%)}}
-.life .best{display:inline-block;background:linear-gradient(135deg,var(--neon),var(--emerald));color:#02140b;font-weight:800;padding:7px 16px;border-radius:999px;font-size:.9rem;margin-bottom:14px}
-.life .dur{font-size:1.6rem;font-family:var(--head)}
-.life .amt{margin:4px 0 8px;font-size:4rem}
-.life p{color:#cfe6d8;font-size:1.1rem}
-.life .btn{width:auto;margin:0;padding:18px 40px;position:relative}
-.upgrade{max-width:620px;margin:40px auto 0;text-align:center;border-color:var(--emerald)}
-.upgrade h3{font-size:1.5rem;margin-bottom:6px}
+.price.life{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:space-between;gap:30px;padding:38px 40px;border-color:var(--green);background:linear-gradient(100deg,rgba(34,214,115,.14),var(--panel) 65%);box-shadow:0 0 0 1px rgba(34,214,115,.25),0 24px 70px rgba(34,214,115,.1)}
+.life .best{display:inline-block;background:var(--green);color:#04170d;font-weight:800;font-size:.8rem;padding:5px 11px;border-radius:6px;margin-bottom:14px}
+.life .dur{color:var(--text);font-family:var(--head);font-size:1.5rem}
+.life .amt{font-size:4rem;margin:2px 0 6px}
+.life p{color:#cbd8d0}
+.life .btn{width:auto;margin:0;padding:16px 38px}
+.upgrade{margin-top:28px;display:flex;gap:18px;align-items:center;border:1px dashed var(--line2);border-radius:14px;padding:22px 26px}
+.upgrade .ic{font-size:1.8rem}
+.upgrade h3{font-size:1.2rem;font-weight:800}
 .upgrade p{color:var(--muted)}
 
-/* discord */
-.discord{text-align:center;padding:56px 30px;border-color:rgba(88,101,242,.5);box-shadow:0 0 80px rgba(16,185,129,.12)}
-.discord h2{font-size:clamp(2rem,4.5vw,3rem);font-weight:800;margin:16px 0 28px}
-.discord-icon{width:72px;height:72px;fill:#7c87ff;filter:drop-shadow(0 0 20px rgba(88,101,242,.7))}
-.perks{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:0 auto 36px;max-width:900px;list-style:none}
-.perks li{padding:16px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid var(--line);font-weight:500}
-.btn-lg{padding:18px 44px;font-size:1.15rem}
-
 /* faq */
-.faq{max-width:780px;margin:0 auto;display:grid;gap:12px}
-.q{border:1px solid var(--line);border-radius:16px;background:rgba(12,18,14,.7);overflow:hidden;transition:border-color .3s,box-shadow .3s}
-.q.open{border-color:var(--neon);box-shadow:0 0 30px rgba(16,185,129,.18)}
-.q button{width:100%;background:none;border:0;text-align:left;padding:20px 24px;display:flex;justify-content:space-between;gap:16px;font-weight:700;font-size:1.05rem}
-.q .plus{color:var(--neon);font-size:1.5rem;line-height:1;transition:transform .3s}
-.q.open .plus{transform:rotate(45deg)}
+.faq{max-width:760px}
+.q{border-top:1px solid var(--line)}
+.q:last-child{border-bottom:1px solid var(--line)}
+.q button{width:100%;background:none;border:0;text-align:left;padding:22px 4px;display:flex;justify-content:space-between;gap:16px;font-weight:700;font-size:1.05rem;transition:color .2s}
+.q button:hover,.q.open button{color:var(--neon)}
+.plus{position:relative;flex:none;width:14px;height:14px;margin-top:6px}
+.plus::before,.plus::after{content:"";position:absolute;background:var(--green);border-radius:2px;transition:transform .3s}
+.plus::before{left:0;right:0;top:6px;height:2px}
+.plus::after{top:0;bottom:0;left:6px;width:2px}
+.q.open .plus::after{transform:scaleY(0)}
 .ans{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
 .q.open .ans{grid-template-rows:1fr}
 .ans div{overflow:hidden}
-.ans p{padding:0 24px 22px;color:var(--muted)}
+.ans p{padding:0 40px 24px 4px;color:var(--muted)}
 
-footer{border-top:1px solid var(--line);padding:36px 0;text-align:center;color:var(--muted);font-size:.92rem}
-footer .logo{justify-content:center;margin-bottom:8px;color:var(--text)}
+footer{border-top:1px solid var(--line);padding:34px 0;color:var(--muted);font-size:.9rem}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.foot a:hover{color:var(--neon)}
 
-.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,40px);opacity:0;background:#0c120e;border:1px solid var(--neon);padding:14px 22px;border-radius:14px;z-index:99;box-shadow:0 0 40px rgba(57,255,136,.3);transition:.35s;pointer-events:none;text-align:center;width:max-content;max-width:90vw}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,30px);opacity:0;background:var(--raise);border:1px solid var(--green);padding:14px 20px;border-radius:10px;z-index:99;transition:.3s;pointer-events:none;width:max-content;max-width:90vw;text-align:center;font-weight:600}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 
-@media(max-width:900px){.pricing{grid-template-columns:repeat(2,1fr)}.price.life{grid-template-columns:1fr;text-align:center}.life .btn{width:100%}}
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:44px}
+  .pricing{grid-template-columns:repeat(2,1fr)}
+  .price.life{flex-direction:column;align-items:flex-start}
+  .life .btn{width:100%}
+}
 @media(max-width:760px){
   section{padding:72px 0}
   .burger{display:block}
-  .links{position:absolute;top:72px;left:4%;right:4%;flex-direction:column;align-items:stretch;background:rgba(8,12,10,.97);border:1px solid var(--line);border-radius:16px;padding:10px;opacity:0;transform:translateY(-10px);pointer-events:none;transition:.25s}
+  .links{position:absolute;top:68px;left:5%;right:5%;flex-direction:column;align-items:stretch;background:#0a0f0c;border:1px solid var(--line2);border-radius:12px;padding:8px;opacity:0;transform:translateY(-8px);pointer-events:none;transition:.2s}
   .links.open{opacity:1;transform:none;pointer-events:auto}
-  .links a{display:block;text-align:center;padding:13px}
+  .links a{display:block;padding:13px}
+  .links a.join{margin:4px 0 0;text-align:center}
   .compare{grid-template-columns:1fr}
   .cta .btn{width:100%}
+  .upgrade{flex-direction:column;align-items:flex-start}
 }
-@media(max-width:480px){.pricing{grid-template-columns:1fr}.card{padding:24px}}
+@media(max-width:480px){.pricing{grid-template-columns:1fr}.plan{padding:24px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<div class="glow" aria-hidden="true"><i></i><i></i><i></i></div>
 
 <nav id="nav">
   <div class="wrap nav-in">
-    <a href="#home" class="logo"><span>🍀</span><b>CARB</b></a>
+    <a href="#home" class="logo">🍀 CARB</a>
     <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">☰</button>
     <ul class="links" id="links">
       <li><a href="#home">Home</a></li>
       <li><a href="#scripts">Our Scripts</a></li>
       <li><a href="#compare">Free vs Premium</a></li>
       <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#discord">Discord</a></li>
+      <li><a href="#" data-discord>Discord</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="#" class="pill" data-discord>Join</a></li>
+      <li><a href="#" class="join" data-discord>Join</a></li>
     </ul>
   </div>
 </nav>
 
 <main>
 <header class="hero" id="home">
-  <div class="wrap">
-    <div class="clover">🍀</div>
-    <h1>CARB</h1>
-    <div class="tag">Quality &amp; Simplicity</div>
-    <p>CARB builds clean, reliable Roblox scripts that are easy to load and easy to use. Pick your game, choose Free or Premium, and get started in minutes.</p>
-    <div class="cta">
-      <a href="#pricing" class="btn btn-primary">Get Started</a>
-      <a href="#scripts" class="btn btn-ghost">View Scripts</a>
-      <a href="#" class="btn btn-discord" data-discord><svg viewBox="0 0 24 24"><use href="#dc"/></svg>Join Discord</a>
+  <div class="wrap hero-grid">
+    <div>
+      <h1>CARB<span>🍀</span></h1>
+      <div class="tag">Quality &amp; Simplicity</div>
+      <p>CARB makes Roblox scripts that are clean, dependable and easy to use. Pick a game, see what Free and Premium include, and get going in minutes.</p>
+      <div class="cta">
+        <a href="#pricing" class="btn btn-primary">Get Started</a>
+        <a href="#scripts" class="btn btn-line">View Scripts</a>
+        <a href="#" class="btn btn-line" data-discord><svg viewBox="0 0 24 24"><use href="#dc"/></svg>Join Discord</a>
+      </div>
+    </div>
+    <div class="catalog" aria-label="Supported games">
+      <div class="cat-top"><i></i><i></i><i></i><span>Supported games</span></div>
+      <div id="catRows"></div>
     </div>
   </div>
 </header>
@@ -211,21 +223,19 @@ footer .logo{justify-content:center;margin-bottom:8px;color:var(--text)}
     <div class="picker">
       <label id="ddLabel">Select a Game</label>
       <button class="dd-btn" id="ddBtn" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="ddLabel ddCur">
-        <span id="ddCur"></span><span class="chev">▼</span>
+        <span id="ddCur"></span><span class="chev"></span>
       </button>
       <ul class="dd-list" id="ddList" role="listbox" tabindex="-1" aria-labelledby="ddLabel"></ul>
     </div>
     <div id="compare">
       <div class="game-title" id="gameTitle"></div>
       <div class="compare" id="cmp">
-        <article class="card plan">
-          <span class="badge free">FREE</span>
-          <h3>CARB FREE</h3>
+        <article class="plan">
+          <div class="plan-top"><h3>CARB FREE</h3><span class="badge free">FREE</span></div>
           <ul id="freeList"></ul>
         </article>
-        <article class="card plan premium">
-          <span class="badge prem">💎 PREMIUM</span>
-          <h3>CARB PREMIUM</h3>
+        <article class="plan premium">
+          <div class="plan-top"><h3>CARB PREMIUM</h3><span class="badge prem">💎 PREMIUM</span></div>
           <ul id="premList"></ul>
           <div class="note" id="note" hidden>No paid version required for this game.</div>
         </article>
@@ -241,26 +251,12 @@ footer .logo{justify-content:center;margin-bottom:8px;color:var(--text)}
       <p>Unlock the full CARB Premium experience!</p>
     </div>
     <div class="pricing" id="plans"></div>
-    <div class="card upgrade">
-      <h3>🛒 Ready to upgrade?</h3>
-      <p>Open a ticket in our Discord server to purchase your plan.</p>
-    </div>
-  </div>
-</section>
-
-<section id="discord">
-  <div class="wrap">
-    <div class="card discord">
-      <svg class="discord-icon" viewBox="0 0 24 24"><use href="#dc"/></svg>
-      <h2>Join the CARB Community</h2>
-      <ul class="perks">
-        <li>📢 Community updates</li>
-        <li>🧩 Script announcements</li>
-        <li>🎫 Support tickets</li>
-        <li>💎 Premium purchasing information</li>
-        <li>💬 Community discussions</li>
-      </ul>
-      <a href="#" class="btn btn-discord btn-lg" data-discord><svg viewBox="0 0 24 24"><use href="#dc"/></svg>Join Discord</a>
+    <div class="upgrade">
+      <div class="ic">🛒</div>
+      <div>
+        <h3>Ready to upgrade?</h3>
+        <p>Open a ticket in our Discord server to purchase your plan.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -274,21 +270,22 @@ footer .logo{justify-content:center;margin-bottom:8px;color:var(--text)}
 </main>
 
 <footer>
-  <div class="wrap">
-    <div class="logo">🍀 <b>CARB</b></div>
-    <p>Quality &amp; Simplicity. Not affiliated with Roblox Corporation.</p>
+  <div class="wrap foot">
+    <span>🍀 CARB. Quality &amp; Simplicity.</span>
+    <a href="#" data-discord>Discord</a>
+    <span>Not affiliated with Roblox Corporation.</span>
   </div>
 </footer>
 
 <div class="toast" id="toast"></div>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="dc" viewBox="0 0 24 24"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.2.4a18 18 0 0 1 4.3 1.4 14.6 14.6 0 0 0-15 0A18 18 0 0 1 8.8 3.4L8.6 3A19.8 19.8 0 0 0 3.7 4.4C.6 9 -.3 13.5.1 18a19.9 19.9 0 0 0 6 3l1.3-2.100a13 13 0 0 1-2-1l.5-.4a14.200 14.200 0 0 0 12.200 0l.5.400a13 13 0 0 1-2 1l1.300 2.100a19.900 19.900 0 0 0 6-3c.5-5.200-.8-9.700-3.600-13.600ZM8.300 15.300c-1.200 0-2.200-1.100-2.200-2.400s1-2.400 2.200-2.400 2.200 1.100 2.200 2.400-1 2.400-2.200 2.400Zm7.400 0c-1.200 0-2.200-1.100-2.200-2.400s1-2.400 2.200-2.400 2.200 1.100 2.200 2.400-1 2.400-2.200 2.400Z"/></symbol></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="dc" viewBox="0 0 24 24"><path d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.2.4a18 18 0 0 1 4.3 1.4 14.6 14.6 0 0 0-15 0A18 18 0 0 1 8.8 3.4L8.6 3A19.8 19.8 0 0 0 3.7 4.4C.6 9-.3 13.5.1 18a19.9 19.9 0 0 0 6 3l1.3-2.1a13 13 0 0 1-2-1l.5-.4a14.200 14.200 0 0 0 12.200 0l.5.4a13 13 0 0 1-2 1l1.300 2.100a19.900 19.900 0 0 0 6-3c.5-5.200-.8-9.700-3.600-13.600ZM8.300 15.300c-1.200 0-2.200-1.100-2.200-2.400s1-2.400 2.200-2.400 2.200 1.100 2.200 2.400-1 2.400-2.200 2.400Zm7.400 0c-1.200 0-2.200-1.100-2.200-2.400s1-2.400 2.200-2.400 2.200 1.100 2.200 2.400-1 2.400-2.200 2.400Z"/></symbol></svg>
 
 <script>
 /* =========================================================
    EDIT ME: everything you'll want to change is in this block
    ========================================================= */
-const DISCORD_URL = "https://discord.gg/YOUR-INVITE-CODE"; // <-- put your Discord invite here
+const DISCORD_URL = "https://discord.gg/nHkWwrqaJ";
 
 // Add a game by adding a new entry. Set freeOnly:true for games with no paid version.
 const GAMES = {
@@ -329,10 +326,9 @@ const FAQ = [
 /* ===================== end of edit zone ===================== */
 
 const $ = s => document.querySelector(s);
-const toast = (msg) => { const t=$("#toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove("show"),3500); };
+const toast = msg => { const t=$("#toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove("show"),3500); };
 const openDiscord = () => window.open(DISCORD_URL, "_blank", "noopener");
 
-// All Discord buttons
 document.querySelectorAll("[data-discord]").forEach(a => { a.href = DISCORD_URL; a.target = "_blank"; a.rel = "noopener"; });
 
 // Nav
@@ -341,22 +337,26 @@ addEventListener("scroll", () => nav.classList.toggle("scrolled", scrollY > 20),
 burger.onclick = () => { const o = links.classList.toggle("open"); burger.setAttribute("aria-expanded", o); };
 links.addEventListener("click", e => { if (e.target.tagName === "A") { links.classList.remove("open"); burger.setAttribute("aria-expanded", false); } });
 
-// Game dropdown
+// Games
 const names = Object.keys(GAMES);
+$("#catRows").innerHTML = names.map(n => {
+  const g = GAMES[n];
+  return `<div class="cat-row"><div><b>${n}</b><small>${g.freeOnly ? "Everything included" : "Free and Premium versions"}</small></div><span class="chip${g.freeOnly ? "" : " dim"}">${g.freeOnly ? "FREE" : "FREE + PREMIUM"}</span></div>`;
+}).join("");
+
 const ddBtn = $("#ddBtn"), ddList = $("#ddList"), ddCur = $("#ddCur"), cmp = $("#cmp");
 let current = names[0], focusIdx = 0;
-
 ddList.innerHTML = names.map((n,i) => `<li role="option" data-i="${i}">${n}</li>`).join("");
 const items = [...ddList.children];
-const setOpen = o => { ddList.classList.toggle("open", o); ddBtn.setAttribute("aria-expanded", o); if (o) setFocus(names.indexOf(current)); };
 const setFocus = i => { focusIdx = (i + names.length) % names.length; items.forEach((li,j) => li.classList.toggle("focus", j === focusIdx)); };
+const setOpen = o => { ddList.classList.toggle("open", o); ddBtn.setAttribute("aria-expanded", o); if (o) setFocus(names.indexOf(current)); };
+const fill = (ul, arr) => { ul.innerHTML = arr.map(f => `<li>${f}</li>`).join(""); };
 
-function fill(ul, arr){ ul.innerHTML = arr.map(f => `<li>${f}</li>`).join(""); }
 function render(name, animate){
   const g = GAMES[name];
   const apply = () => {
     ddCur.textContent = name;
-    $("#gameTitle").innerHTML = `Now viewing: <span>${name}</span>`;
+    $("#gameTitle").innerHTML = `Showing <span>${name}</span>`;
     fill($("#freeList"), g.free);
     fill($("#premList"), g.premium);
     $("#note").hidden = !g.freeOnly;
@@ -364,7 +364,7 @@ function render(name, animate){
   };
   if (!animate) return apply();
   cmp.classList.add("swap");
-  setTimeout(() => { apply(); cmp.classList.remove("swap"); }, 220);
+  setTimeout(() => { apply(); cmp.classList.remove("swap"); }, 200);
 }
 function choose(name){ if (name !== current) { current = name; render(name, true); } setOpen(false); ddBtn.focus(); }
 
@@ -381,30 +381,30 @@ render(current, false);
 
 // Pricing
 $("#plans").innerHTML = PLANS.map(p => p.best ? `
-  <div class="card price life">
+  <div class="price life">
     <div>
       <span class="best">⭐ BEST VALUE: LIFETIME ACCESS</span>
       <div class="dur">💎 ${p.name}</div>
       <div class="amt">${p.price}</div>
       <p>Pay once. Enjoy CARB Premium forever!</p>
     </div>
-    <button class="btn btn-primary" data-buy="${p.name}">Purchase</button>
+    <button class="btn btn-primary" data-buy>Purchase</button>
   </div>` : `
-  <div class="card price">
+  <div class="price">
     <div class="dur">💚 ${p.name}</div>
     <div class="amt">${p.price}</div>
-    <button class="btn btn-ghost" data-buy="${p.name}">Purchase</button>
+    <button class="btn btn-line" data-buy>Purchase</button>
   </div>`).join("");
 $("#plans").addEventListener("click", e => {
-  const b = e.target.closest("[data-buy]"); if (!b) return;
+  if (!e.target.closest("[data-buy]")) return;
   toast("🛒 Ready to upgrade? Open a ticket in our Discord server to purchase your plan.");
   setTimeout(openDiscord, 700);
 });
 
-// FAQ accordion
+// FAQ
 $("#faqList").innerHTML = FAQ.map(([q,a],i) => `
   <div class="q">
-    <button aria-expanded="false" aria-controls="a${i}"><span>${q}</span><span class="plus">+</span></button>
+    <button aria-expanded="false" aria-controls="a${i}"><span>${q}</span><span class="plus"></span></button>
     <div class="ans" id="a${i}"><div><p>${a}</p></div></div>
   </div>`).join("");
 $("#faqList").addEventListener("click", e => {
